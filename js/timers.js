@@ -61,4 +61,21 @@ router.post("/:id/stop", auth(), async (req, res) => {
   res.status(201).json(timer[0]._id);
 });
 
+router.delete("/:id", auth(), async (req, res) => {
+  const timer = await getTimerById(req.db, req.params.id, req.user._id);
+  const db = req.db;
+
+  await db.collection("timers").deleteOne(
+    {
+      _id: ObjectId(req.params.id),
+      userId: req.user._id,
+    },
+    {
+      returnOriginal: false,
+    }
+  );
+
+  res.status(201).json(timer[0]._id);
+});
+
 export { router };

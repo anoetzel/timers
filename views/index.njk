@@ -55,6 +55,7 @@
               (<span class="uk-text-muted mono">{{ formatTime(t.start) }}</span>
               &ndash;
               <span class="uk-text-muted mono">{{ formatTime(t.end) }}</span>)
+              <button class="uk-button uk-button-default uk-button-small uk-margin-small-left" title="Delete this timer" v-on:click="deleteTimer(t._id)">x</button>
             </li>
           </ul>
         </div>

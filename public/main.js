@@ -65,7 +65,15 @@
         fetchJson(`/api/timers/${id}/stop`, {
           method: "post",
         }).then(() => {
-          info(`Stopped the timer [${id}]`);
+          info(`Stopped the timer with ID [${id}]`);
+          this.getTimers();
+        });
+      },
+      deleteTimer(id) {
+        fetchJson(`/api/timers/${id}`, {
+          method: "delete",
+        }).then(() => {
+          info(`Deleted the timer with ID [${id}]`);
           this.getTimers();
         });
       },
